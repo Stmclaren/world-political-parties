@@ -1,3 +1,3 @@
 class Country < ApplicationRecord
-  belongs_to :continent_id
+  belongs_to :continent
 end

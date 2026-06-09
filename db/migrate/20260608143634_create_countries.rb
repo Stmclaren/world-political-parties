@@ -4,7 +4,7 @@ class CreateCountries < ActiveRecord::Migration[8.1]
       t.string :name
       t.string :slug
       t.string :iso_code
-      t.references :continent_id, null: false, foreign_key: true
+      t.references :continent, null: false, foreign_key: true
       t.string :ruling_party
       t.text :description
 

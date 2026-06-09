@@ -19,7 +19,7 @@ ActiveRecord::Schema[8.1].define(version: 2026_06_08_143634) do
   end
 
   create_table "countries", force: :cascade do |t|
-    t.integer "continent_id_id", null: false
+    t.integer "continent_id", null: false
     t.datetime "created_at", null: false
     t.text "description"
     t.string "iso_code"
@@ -27,8 +27,8 @@ ActiveRecord::Schema[8.1].define(version: 2026_06_08_143634) do
     t.string "ruling_party"
     t.string "slug"
     t.datetime "updated_at", null: false
-    t.index ["continent_id_id"], name: "index_countries_on_continent_id_id"
+    t.index ["continent_id"], name: "index_countries_on_continent_id"
   end
 
-  add_foreign_key "countries", "continent_ids"
+  add_foreign_key "countries", "continents"
 end

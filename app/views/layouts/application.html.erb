@@ -6,6 +6,8 @@
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="application-name" content="World Political Parties">
     <meta name="mobile-web-app-capable" content="yes">
+    <meta name="mapbox-token" content="<%= Rails.application.credentials.dig(:mapbox, :api_key) %>";
+>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
@@ -19,6 +21,8 @@
     <link rel="apple-touch-icon" href="/icon.png">
 
     <%# Includes all stylesheet files in app/assets/stylesheets %>
+    <%= stylesheet_link_tag "https://api.mapbox.com/mapbox-gl-js/v3.0.0/mapbox-gl.css" %>
+    <%= javascript_include_tag "https://api.mapbox.com/mapbox-gl-js/v3.0.0/mapbox-gl.js" %>
     <%= stylesheet_link_tag :app, "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
   </head>

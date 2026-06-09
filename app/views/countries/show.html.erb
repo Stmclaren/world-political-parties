@@ -1,0 +1,8 @@
+<div
+  data-controller="map"
+  data-map-token-value="<%= Rails.application.credentials.dig(:mapbox, :api_key) %>"
+  data-map-iso-value="<%= @country.iso_code %>"
+  data-map-center-value="<%= [@country.longitude, @country.latitude] %>"
+  data-map-zoom-value="4"
+  style="height: 500px;"
+></div>

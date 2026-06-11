@@ -1,5 +1,6 @@
 class CountriesController < ApplicationController
-  def show
-    @country = Country.find(params[:id])
-  end
+ def sidebar
+   @country = Country.find_by!(iso: params[:iso])
+   render partial: "countries/sidebar", locals: { country: @country }
+ end
 end

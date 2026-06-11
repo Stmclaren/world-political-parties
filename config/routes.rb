@@ -11,5 +11,6 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   # root "posts#index"
-  resources :countries, only: [ :show ]
+  get "/map", to: "map#show"
+  get "/countries/:iso/sidebar", to: "countries#sidebar"
 end

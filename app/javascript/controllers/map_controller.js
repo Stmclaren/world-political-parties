@@ -1,36 +1,45 @@
 import { Controller } from "@hotwired/stimulus"
 
 export default class extends Controller {
-  static values = {
-    token: String,
-    iso: String
-  }
+    static values = {
+      token: String,
+      iso: String
+    }
 
   connect() {
-    mapboxgl.accessToken = this.tokenValue
+    requestAnimationFrame(() => this.initializeMap());
+  }
 
-    const map = new mapboxgl.Map({
+  initializeMap() {
+    if (this.map) {
+      console.warn("Map already initialized — skipping");
+      return;
+    }
+
+    mapboxgl.accessToken = this.tokenValue;
+
+    this.map = new mapboxgl.Map({
       container: this.element,
       style: "mapbox://styles/mapbox/light-v11",
       center: [0, 20],
-      zoom: 2.5,
-      interactive: true // ensures manual navigation works
-    })
+      zoom: 1.5,
+      interactive: true
+    });
 
-    map.on("load", () => {
+    this.map.on("load", () => {
       // Add interaction controls
-      map.resize();
-      map.addControl(new mapboxgl.NavigationControl());
-      map.addControl(new mapboxgl.FullscreenControl());
-      map.addControl(new mapboxgl.ScaleControl());
+      this.map.resize();
+      this.map.addControl(new mapboxgl.NavigationControl());
+      this.map.addControl(new mapboxgl.FullscreenControl());
+      this.map.addControl(new mapboxgl.ScaleControl());
 
       // Add country boundaries
-      map.addSource("countries", {
+      this.map.addSource("countries", {
         type: "vector",
-        urls: "mapbox://mapbox.country-boundaries-v1"
+        url: "mapbox://mapbox.country-boundaries-v1"
       })
       // Highlight selected country
-      map.addLayer({
+      this.map.addLayer({
         id: "country-highlight",
         type: "fill",
         source: "countries",
@@ -42,22 +51,22 @@ export default class extends Controller {
         filter: ["==", "iso_3166_1_alpha_3", this.isoValue]
       })
       // Auto-center using Turf
-    map.on("idle", () => {
-      const features = map.querySourceFeatures("countries", {
-      sourceLayer: "country_boundaries",
-      filter: ["==", "iso_3166_1_alpha_3", this.isoValue]
+      this.map.on("idle", () => {
+        const features = map.querySourceFeatures("countries", {
+        sourceLayer: "country_boundaries",
+        filter: ["==", "iso_3166_1_alpha_3", this.isoValue]
+        });
+
+        if (features.length > 0) {
+        const bbox = turf.bbox(features[0])
+        this.map.fitBounds(bbox, { padding: 40 })
+          }
       });
 
-      if (features.length > 0) {
-      const bbox = turf.bbox(features[0])
-      map.fitBounds(bbox, { padding: 40 })
-        }
-    });
-
             // Prepare for future click events
-      map.on("click", (e) => {
+      this.map.on("click", (e) => {
         console.log("Clicked at:", e.lngLat);
-      })
-    })
+      });
+    });
   }
 }

@@ -1,21 +1,11 @@
 import { Controller } from "@hotwired/stimulus"
 
 export default class extends Controller {
-    static values = {
-      token: String,
-      iso: String
-    }
-
-  connect() {
-    requestAnimationFrame(() => this.initializeMap());
+  static values = {
+      token: String
   }
 
-  initializeMap() {
-    if (this.map) {
-      console.warn("Map already initialized — skipping");
-      return;
-    }
-
+  connect() {
     mapboxgl.accessToken = this.tokenValue;
 
     this.map = new mapboxgl.Map({
@@ -24,49 +14,56 @@ export default class extends Controller {
       center: [0, 20],
       zoom: 1.5,
       interactive: true
-    });
+    })
 
     this.map.on("load", () => {
-      // Add interaction controls
-      this.map.resize();
       this.map.addControl(new mapboxgl.NavigationControl());
       this.map.addControl(new mapboxgl.FullscreenControl());
       this.map.addControl(new mapboxgl.ScaleControl());
 
-      // Add country boundaries
+      this.addCountryLayers();
+      this.enableCountryClick();
+    })
+  }
+
+    addCountryLayers() {
       this.map.addSource("countries", {
         type: "vector",
         url: "mapbox://mapbox.country-boundaries-v1"
       })
+
       // Highlight selected country
       this.map.addLayer({
-        id: "country-highlight",
+        id: "country-fill",
         type: "fill",
         source: "countries",
         "source-layer": "country_boundaries",
         paint: {
           "fill-color": "#0080ff",
-          "fill-opacity": 0.3
-        },
-        filter: ["==", "iso_3166_1_alpha_3", this.isoValue]
+          "fill-opacity": 0.1
+        }
       })
+    }
       // Auto-center using Turf
-      this.map.on("idle", () => {
-        const features = map.querySourceFeatures("countries", {
-        sourceLayer: "country_boundaries",
-        filter: ["==", "iso_3166_1_alpha_3", this.isoValue]
-        });
+      enableCountryClick() {
+    this.map.on("click", (e) => {
+      const features = this.map.queryRenderedFeatures(e.point, {
+        layers: ["country-fill"]
+      })
 
-        if (features.length > 0) {
-        const bbox = turf.bbox(features[0])
-        this.map.fitBounds(bbox, { padding: 40 })
-          }
-      });
+      if (features.length === 0) return
 
-            // Prepare for future click events
-      this.map.on("click", (e) => {
-        console.log("Clicked at:", e.lngLat);
-      });
-    });
+      const iso = features[0].properties.iso_3166_1_alpha_3
+
+      this.loadSidebar(iso)
+    })
+  }
+
+  loadSidebar(iso) {
+    fetch(`/countries/${iso}/sidebar`)
+      .then(response => response.text())
+      .then(html => {
+        document.getElementById("sidebar").innerHTML = html
+      })
   }
 }

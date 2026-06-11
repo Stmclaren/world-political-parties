@@ -1,3 +1,4 @@
 class Country < ApplicationRecord
-  belongs_to :continent
+  validates :iso, presence: true, uniqueness: true
+  validates :name, presence: true
 end

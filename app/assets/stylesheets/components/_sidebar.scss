@@ -1,0 +1,49 @@
+#sidebar {
+  flex: 1;
+  width: 100%;
+  min-width: 0;
+}
+
+.sidebar-content {
+  width: 100%;
+  padding-top: 14px;
+
+  p {
+    overflow-wrap: anywhere;
+    word-break: break-word;
+  }
+}
+
+.sidebar-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0 8px;
+  padding: 0;
+
+  h2.country-name {
+    margin: 0;
+    font-size: 22px;
+    flex: 7;
+    overflow-wrap: anywhere;
+  }
+
+  h2.long-name {
+    margin: 0;
+    font-size: 17px;
+    flex: 7;
+  }
+
+  .iso-header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+    flex: 3;
+    font-weight: bold;
+  }
+}
+
+* {
+  outline: 1px solid red;
+}

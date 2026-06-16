@@ -1,6 +1,10 @@
 <div class="sidebar-content">
-  <h2><%= country.name %></h2>
-  <p><%= country.iso %></p>
+  <div class="sidebar-header">
+  <h2 class="<%= country.name.length > 14 ? 'long-name' : 'country-name' %>">
+    <%= country.name %>
+    </h2>
+  <p class="iso-header"><%= country.iso %></p>
+  </div>
   <br>
   <p><%= country.description %>
   <!-- Add political data here later -->

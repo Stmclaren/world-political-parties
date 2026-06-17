@@ -1,9 +1,9 @@
-<div class="map-container" style="display: flex; height: 500px;">
+<div class="map-container" style="display: flex; height: 625px;">
 
   <div data-controller="map"
        data-map-token-value="<%= Rails.application.credentials.dig(:mapbox, :api_key) %>"
        data-turbo="false"
-       style="width: 75%;">
+       style="width: 65%;">
 
     <!-- Empty Mapbox container needed to work (was causing errors previously) -->
     <div data-map-target="container"
@@ -13,7 +13,7 @@
 
   <div id="sidebar"
        data-turbo="false"
-       style="width: 25%; overflow-y: auto;">
+       style="width: 35%; overflow-y: auto;">
   </div>
 
 </div>

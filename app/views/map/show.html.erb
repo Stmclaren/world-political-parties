@@ -1,12 +1,19 @@
-<div class="map-container">
-<div
-  data-controller="map"
-  data-map-token-value="<%= Rails.application.credentials.dig(:mapbox, :api_key) %>"
-  style="height: 500px; width: 75%;"
-  data-turbo="false"
-></div>
-<body data-turbo="false"></body>
+<div class="map-container" style="display: flex; height: 500px;">
 
-<div id="sidebar"
-style= width: 25%></div>
+  <div data-controller="map"
+       data-map-token-value="<%= Rails.application.credentials.dig(:mapbox, :api_key) %>"
+       data-turbo="false"
+       style="width: 75%;">
+
+    <!-- Empty Mapbox container needed to work (was causing errors previously) -->
+    <div data-map-target="container"
+         style="height: 100%; width: 100%;"></div>
+
+  </div>
+
+  <div id="sidebar"
+       data-turbo="false"
+       style="width: 25%; overflow-y: auto;">
+  </div>
+
 </div>

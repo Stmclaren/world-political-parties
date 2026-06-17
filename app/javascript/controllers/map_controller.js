@@ -1,19 +1,20 @@
 import { Controller } from "@hotwired/stimulus"
+import { Collapse } from "bootstrap"
+import mapboxgl from "mapbox-gl"
 
 export default class extends Controller {
-  static values = {
-      token: String
-  }
+  static targets = ["container"]
+  static values = { token: String }
+
 
   connect() {
     mapboxgl.accessToken = this.tokenValue;
 
     this.map = new mapboxgl.Map({
-      container: this.element,
+      container: this.containerTarget,
       style: "mapbox://styles/mapbox/light-v11",
       center: [0, 20],
       zoom: 1.5,
-      interactive: true
     });
 
     this.map.on("load", () => {
@@ -71,7 +72,16 @@ export default class extends Controller {
     fetch(`/countries/${iso}/sidebar`)
       .then(response => response.text())
       .then(html => {
-        document.getElementById("sidebar").innerHTML = html
+        const sidebar = document.getElementById("sidebar")
+        sidebar.innerHTML = html
+        // Reinitialize Bootstrap collapse for the newly injected HTML
+        this.initializeAccordion(sidebar)
       });
+  }
+
+  initializeAccordion(sidebarElement) {
+    sidebarElement.querySelectorAll(".accordion-collapse").forEach(el => {
+      new Collapse(el, { toggle: false })
+    })
   }
 }

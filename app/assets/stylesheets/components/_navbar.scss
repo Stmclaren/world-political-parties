@@ -1,9 +1,9 @@
 .navbar {
-  position: absolute;
+  position: absolute;   // or fixed
   top: 0;
   left: 0;
-  max-width: 65%;
-  z-index: 10;
+  width: 100%;
+  z-index: 1000;
 }
 
 .navbar-brand {

@@ -1,20 +1,22 @@
-<div class="map-container" style="display: flex; height: 625px;">
-
 <%= render "shared/navbar" %>
 
-  <div class="map-item" data-controller="map"
-       data-map-token-value="<%= Rails.application.credentials.dig(:mapbox, :api_key) %>"
-       data-turbo="false"
-       style="width: 65%;">
+<div class="map-container"
+      data-turbo="false"
+      style="display: flex;
+      height: 650px;">
 
-    <!-- Empty Mapbox container needed to work (was causing errors previously) -->
-    <div data-map-target="container"
-         style="height: 100%; width: 100%;"></div>
+    <div class="map-item"
+          data-controller="map"
+          data-map-token-value="<%= Rails.application.credentials.dig(:mapbox, :api_key) %>"
+          style="width: 65%;">
 
-  </div>
+      <!-- Empty Mapbox container needed to work (was causing errors previously) -->
+      <div data-map-target="container"
+          style="height: 100%; width: 100%;"></div>
+
+    </div>
 
   <div id="sidebar"
-       data-turbo="false"
        style="width: 35%; overflow-y: auto;">
   </div>
 

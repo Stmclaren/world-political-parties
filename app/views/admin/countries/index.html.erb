@@ -1,0 +1,8 @@
+<div class="edit-country-form">
+  <select id="country-select" class="form-select" aria-label="Default select example">
+    <option selected>Select a country to edit</option>
+        <% @countries.each do |country| %>
+    <option value="<%= country.id %>"><%= country.name %></option>
+        <% end%>
+  </select>
+</div>

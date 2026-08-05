@@ -8,3 +8,5 @@ pin_all_from "app/javascript/controllers", under: "controllers"
 pin "bootstrap", to: "https://ga.jspm.io/npm:bootstrap@5.3.3/dist/js/bootstrap.esm.js"
 pin "@popperjs/core", to: "https://ga.jspm.io/npm:@popperjs/core@2.11.8/dist/esm/index.js"
 pin "mapbox-gl", to: "https://ga.jspm.io/npm:mapbox-gl@3.24.1/dist/mapbox-gl.js"
+pin "@orchidjs/sifter", to: "@orchidjs--sifter.js" # @1.1.0
+pin "@orchidjs/unicode-variants", to: "@orchidjs--unicode-variants.js" # @1.1.2

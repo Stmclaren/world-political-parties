@@ -16,6 +16,6 @@ Rails.application.routes.draw do
   get "/countries/:iso/sidebar", to: "countries#sidebar"
   namespace :admin do
     resource :dashboard, only: :show
-    resources :countries, only: [ :index, :edit, :update ]
+    resources :countries, only: [ :index, :show, :edit, :update ]
   end
 end

@@ -2,3 +2,18 @@
   max-height: 600px;
   overflow-y: auto;
 }
+
+.edit-country-form {
+  margin: auto;
+  padding: 10px;
+  width: 80%;
+}
+
+.edit-country-form .form-control {
+  margin: 0;
+  height: 90px;
+}
+
+.edit-country-form .btn {
+  margin-top: 10px;
+}

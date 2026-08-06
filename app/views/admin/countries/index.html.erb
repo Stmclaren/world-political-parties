@@ -1,8 +1,30 @@
-<div class="edit-country-form">
+<div class="country-dropdown">
   <select id="country-select" class="form-select" aria-label="Default select example">
-    <option selected>Select a country to edit</option>
+    <option selected>Country List</option>
         <% @countries.each do |country| %>
     <option value="<%= country.id %>"><%= country.name %></option>
         <% end%>
   </select>
+  <div class="edit-country-form">
+    <input type="hidden" id="countryIdInput">
+    <div class="government-structure-input">
+    <input type="text" class="form-control" id="governmentInput">
+    </div>
+       <div class="electoral-system-input">
+    <input type="text" class="form-control" id="electoralInput">
+    </div>
+       <div class="political-parties-input">
+    <input type="text" class="form-control" id="partiesInput">
+    </div>
+       <div class="eu-alignment-input">
+    <input type="text" class="form-control" id="euInput">
+    </div>
+       <div class="governance-indicators-input">
+    <input type="text" class="form-control" id="indicatorsInput">
+    </div>
+       <div class="key-issues-input">
+    <input type="text" class="form-control" id="issuesInput">
+    </div>
+    <button id="saveCountryBtn" class="btn btn-primary">Save</button>
+  </div>
 </div>

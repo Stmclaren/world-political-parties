@@ -14,6 +14,13 @@
   height: 90px;
 }
 
+.country-input-field {
+   input {
+    overflow-wrap: break-word;
+    word-break: break-word;
+   }
+}
+
 .edit-country-form .btn {
   margin-top: 10px;
 }

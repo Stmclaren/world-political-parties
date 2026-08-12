@@ -9,16 +9,21 @@
   width: 80%;
 }
 
-.edit-country-form .form-control {
-  margin: 0;
-  height: 90px;
-}
+// .edit-country-form .form-control {
+//   margin: 0;
+//      input {
+//       width: 80%;
+//       height: fit-content;
+//       inline-size: fit-content;
+//       block-size: fit-content;
+//      }
+// }
 
-.country-input-field {
-   input {
-    overflow-wrap: break-word;
-    word-break: break-word;
-   }
+.edit-country-form .country-input-field {
+      width: 80%;
+      height: auto;
+      word-wrap: break-word;
+      overflow-y: auto;
 }
 
 .edit-country-form .btn {

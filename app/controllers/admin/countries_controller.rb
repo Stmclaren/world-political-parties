@@ -20,8 +20,10 @@ class Admin::CountriesController < Admin::BaseController
     @country = Country.find(params[:id])
 
     if @country.update(country_params)
+      flash.now[:notice] = "Country saved successfully"
       render json: @country
     else
+      flash.now[:alert] = "Could not save country"
       render json: @country.errors, status: :unprocessable_entity
     end
   end
@@ -29,6 +31,6 @@ class Admin::CountriesController < Admin::BaseController
   private
 
   def country_params
-    params.require(:country).permit(:government_structure, :electoral_system, :political_parties, :eu_alignment, :governance_indicators, :key_issues)
+    params.require(:country).permit(:government_structure, :electoral_system, :political_parties, :eu_alignment, :governance_indicators, :key_issues, :updated_at)
   end
 end

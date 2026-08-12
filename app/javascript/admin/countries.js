@@ -24,6 +24,12 @@ document.addEventListener("turbo:load", () => {
       input5.value = country.governance_indicators || "";
       input6.value = country.key_issues || "";
     });
+
+    document.addEventListener("input", (e) => {
+      if (e.target.tagName.toLowerCase() !== "textarea") return;
+      e.target.style.height = "auto";
+      e.target.style.height = `${e.target.scrollHeight}px`;
+    });
 });
 
 document.addEventListener("turbo:load", () => {
@@ -57,6 +63,8 @@ document.addEventListener("turbo:load", () => {
         }
       })
     });
+    document.getElementById("lastUpdated").innerText =
+      `Last updated: ${new Date(data.updated_at).toLocaleString()}`;
 
     const result = await response.json();
     console.log("Saved:", result);

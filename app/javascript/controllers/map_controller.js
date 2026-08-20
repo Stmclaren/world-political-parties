@@ -1,6 +1,7 @@
 import { Controller } from "@hotwired/stimulus"
 import { Collapse } from "bootstrap"
 import mapboxgl from "mapbox-gl"
+// import { toggleOutline, toggleFill } from "../mapbox/toggles"
 
 export default class extends Controller {
   static targets = ["container"]
@@ -28,6 +29,7 @@ export default class extends Controller {
 
       this.addCountryLayers();
       this.enableCountryClick();
+      this.addHighlightLayer();
     });
   }
 
@@ -64,7 +66,8 @@ export default class extends Controller {
 
       const iso = features[0].properties.iso_3166_1_alpha_3
 
-      this.loadSidebar(iso)
+      this.loadSidebar(iso);
+      this.highlightCountry(iso);
     });
   }
 
@@ -84,4 +87,28 @@ export default class extends Controller {
       new Collapse(el, { toggle: false })
     })
   }
+
+   addHighlightLayer() {
+     if (this.map.getLayer("country-highlight")) return;
+
+     this.map.addLayer({
+      id: "country-highlight",
+      type: "line",
+      source: "countries",
+      "source-layer": "country_boundaries",
+      paint: {
+        "line-color": "#ff0000",
+        "line-width": 1.5,
+        "line-opacity": 1
+      },
+      filter: ["==", "iso_3166_1_alpha_3", ""]
+     });
+   }
+   highlightCountry(isoCode) {
+     this.map.setFilter("country-highlight",[
+      "==",
+      "iso_3166_1_alpha_3",
+      isoCode
+     ]);
+   }
 }

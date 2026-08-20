@@ -36,6 +36,7 @@ document.addEventListener("turbo:load", () => {
   const saveBtn = document.getElementById("saveCountryBtn");
   const csrfToken = document.querySelector('meta[name="csrf-token"]').content;
 
+  if (document.getElementById("saveCountryBtn")) {
   saveBtn.addEventListener("click", async () => {
     const countryId = document.getElementById("countryIdInput").value;
     const input1 = document.getElementById("governmentInput");
@@ -63,10 +64,11 @@ document.addEventListener("turbo:load", () => {
         }
       })
     });
-    document.getElementById("lastUpdated").innerText =
-      `Last updated: ${new Date(data.updated_at).toLocaleString()}`;
-
     const result = await response.json();
+    document.getElementById("lastUpdated").innerText =
+      `Saved: ${new Date(result.updated_at).toLocaleString()}`;
+
     console.log("Saved:", result);
   });
+  }
 });

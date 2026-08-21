@@ -18,3 +18,11 @@
   width: 30px;
   cursor: pointer;
 }
+
+.dual-navbar {
+  display: flex;
+  justify-content: space-between;
+}
+.dual-navbar .print-countries {
+  margin-right: 10px;
+}

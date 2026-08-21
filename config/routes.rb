@@ -14,6 +14,7 @@ Rails.application.routes.draw do
   root to: "map#show"
   get "/map", to: "map#show"
   get "/countries/:iso/sidebar", to: "countries#sidebar"
+  resources :countries, only: [ :index ]
   namespace :admin do
     resource :dashboard, only: :show
     resources :countries, only: [ :index, :show, :edit, :update ]

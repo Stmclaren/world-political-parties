@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2026_08_05_164904) do
+ActiveRecord::Schema[8.1].define(version: 2026_08_21_141956) do
   create_table "admins", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.string "email", default: "", null: false
@@ -31,6 +31,7 @@ ActiveRecord::Schema[8.1].define(version: 2026_08_05_164904) do
   end
 
   create_table "countries", force: :cascade do |t|
+    t.string "continent"
     t.datetime "created_at", null: false
     t.text "description"
     t.text "electoral_system"

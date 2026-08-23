@@ -3,3 +3,12 @@
   margin-left: 20px;
   width: 80%;
 }
+
+.list-group-item .btn {
+position: relative;
+float: right;
+}
+
+ol.list-group-item {
+  list-style-type: none;
+}

@@ -7,67 +7,140 @@
              type="checkbox"
              value=""
              id="firstCheckbox">
-      <label class="accordion-button collapsed"
-             for="firstCheckbox"
-             type="button"
-             data-bs-toggle="collapse"
-             data-bs-target="#collapseOne"
-             aria-expanded="false"
-             aria-controls="collapseOne">Africa</label>
-    </ol>
-      <div class="cursor-pointer font-semibold list-none">
+      <label class="accordion-item collapsed">Africa</label>
+      <button class="btn-primary btn" id="continent-expand"
+              type="button"
+              data-bs-toggle="collapse"
+              data-bs-target="#country-list-africa"
+              aria-expanded="false"
+              aria-controls="country-list-africa">Expand</button>
+      <div id="country-list-africa" class="collapse">
         <% @countries.each do |country| %>
+          <% if country.continent == "Africa" %>
         <li>
-          <input class="form-check-input me-1" type="checbox" value="" id="print-info<% country.name %>">
-          <label for="print-info<% country.name %>" class="form-check-input me-1"><%= country.name %></label>
+          <input class="form-check-input" type="checkbox" id="print-info <% country.name %>">
+          <label for="print-info<% country.name %>" class="form-check-label"><%= country.name %></label>
         </li>
+          <% end %>
         <% end %>
       </div>
-    <li class="list-group-item">
-      <input class="form-check-input me-1" type="checkbox" value="" id="secondCheckbox">
-      <label class="form-check-label" for="secondCheckbox">Asia</label>
-    </li>
-    <li class="list-group-item">
-      <input class="form-check-input me-1" type="checkbox" value="" id="thirdCheckbox">
-      <label class="form-check-label" for="thirdCheckbox">Europe</label>
-    </li>
-      <li class="list-group-item">
-      <input class="form-check-input me-1" type="checkbox" value="" id="fourthCheckbox">
-      <label class="form-check-label" for="thirdCheckbox">North America</label>
-    </li>
-      <li class="list-group-item">
-      <input class="form-check-input me-1" type="checkbox" value="" id="fifthCheckbox">
-      <label class="form-check-label" for="thirdCheckbox">Oceania</label>
-    </li>
-      <li class="list-group-item">
-      <input class="form-check-input me-1" type="checkbox" value="" id="sixthCheckbox">
-      <label class="form-check-label" for="thirdCheckbox">South America</label>
-    </li>
+    </ol>
+    <ol class="list-group-item">
+      <input class="accordion-item"
+             type="checkbox"
+             value=""
+             id="firstCheckbox">
+      <label class="accordion-item collapsed">Asia</label>
+      <button class="btn-primary btn" id="continent-expand"
+              type="button"
+              data-bs-toggle="collapse"
+              data-bs-target="#country-list-asia"
+              aria-expanded="false"
+              aria-controls="country-list-africa">Expand</button>
+      <div id="country-list-asia" class="collapse">
+        <% @countries.each do |country| %>
+          <% if country.continent == "Asia" %>
+        <li>
+          <input class="form-check-input" type="checkbox" id="print-info <% country.name %>">
+          <label for="print-info<% country.name %>" class="form-check-label"><%= country.name %></label>
+        </li>
+          <% end %>
+        <% end %>
+      </div>
+    </ol>
+    <ol class="list-group-item">
+      <input class="accordion-item"
+             type="checkbox"
+             value=""
+             id="firstCheckbox">
+      <label class="accordion-item collapsed">Europe</label>
+      <button class="btn-primary btn" id="continent-expand"
+              type="button"
+              data-bs-toggle="collapse"
+              data-bs-target="#country-list-europe"
+              aria-expanded="false"
+              aria-controls="country-list-africa">Expand</button>
+      <div id="country-list-europe" class="collapse">
+        <% @countries.each do |country| %>
+          <% if country.continent == "Europe" %>
+        <li>
+          <input class="form-check-input" type="checkbox" id="print-info <% country.name %>">
+          <label for="print-info<% country.name %>" class="form-check-label"><%= country.name %></label>
+        </li>
+          <% end %>
+        <% end %>
+      </div>
+    </ol>
+    <ol class="list-group-item">
+      <input class="accordion-item"
+             type="checkbox"
+             value=""
+             id="firstCheckbox">
+      <label class="accordion-item collapsed">North America</label>
+      <button class="btn-primary btn" id="continent-expand"
+              type="button"
+              data-bs-toggle="collapse"
+              data-bs-target="#country-list-north-america"
+              aria-expanded="false"
+              aria-controls="country-list-africa">Expand</button>
+      <div id="country-list-north-america" class="collapse">
+        <% @countries.each do |country| %>
+          <% if country.continent == "North America" %>
+        <li>
+          <input class="form-check-input" type="checkbox" id="print-info <% country.name %>">
+          <label for="print-info<% country.name %>" class="form-check-label"><%= country.name %></label>
+        </li>
+          <% end %>
+        <% end %>
+      </div>
+    </ol>
+    <ol class="list-group-item">
+      <input class="accordion-item"
+             type="checkbox"
+             value=""
+             id="firstCheckbox">
+      <label class="accordion-item collapsed">Oceania</label>
+      <button class="btn-primary btn" id="continent-expand"
+              type="button"
+              data-bs-toggle="collapse"
+              data-bs-target="#country-list-oceania"
+              aria-expanded="false"
+              aria-controls="country-list-oceania">Expand</button>
+      <div id="country-list-oceania" class="collapse">
+        <% @countries.each do |country| %>
+          <% if country.continent == "Oceania" %>
+        <li>
+          <input class="form-check-input" type="checkbox" id="print-info <% country.name %>">
+          <label for="print-info<% country.name %>" class="form-check-label"><%= country.name %></label>
+        </li>
+          <% end %>
+        <% end %>
+      </div>
+    </ol>
+    <ol class="list-group-item">
+      <input class="accordion-item"
+             type="checkbox"
+             value=""
+             id="firstCheckbox">
+      <label class="accordion-item collapsed">South America</label>
+      <button class="btn-primary btn" id="continent-expand"
+              type="button"
+              data-bs-toggle="collapse"
+              data-bs-target="#country-list-south-america"
+              aria-expanded="false"
+              aria-controls="country-list-south-america">Expand</button>
+      <div id="country-list-south-america" class="collapse">
+        <% @countries.each do |country| %>
+          <% if country.continent == "South America" %>
+        <li>
+          <input class="form-check-input" type="checkbox" id="print-info <% country.name %>">
+          <label for="print-info<% country.name %>" class="form-check-label"><%= country.name %></label>
+        </li>
+          <% end %>
+        <% end %>
+      </div>
+    </ol>
   </ol>
   <br>
   <button class="btn btn-primary" id="confirm-country-selection">Confirm Selection</button>
-</div>
-
-
-<div class="checklist-item">
-  <details>
-    <!-- The main checklist item that toggles the accordion -->
-    <summary class="cursor-pointer font-semibold list-none">
-      <input type="checkbox" id="main-task-1">
-      <label for="main-task-1" class="ml-2">Review project proposal</label>
-      <span class="text-xs text-gray-400 ml-1">(Click text to expand)</span>
-    </summary>
-
-        <div class="pl-6 mt-2 flex flex-col gap-2">
-      <div>
-        <input type="checkbox" id="sub-task-1a">
-        <label for="sub-task-1a" class="ml-2 text-gray-600">Verify budget numbers</label>
-      </div>
-
-      <div>
-        <input type="checkbox" id="sub-task-1b">
-        <label for="sub-task-1b" class="ml-2 text-gray-600">Confirm timeline dates</label>
-      </div>
-    </div>
-  </details>
 </div>

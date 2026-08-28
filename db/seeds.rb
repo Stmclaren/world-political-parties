@@ -214,3 +214,8 @@ countries.each do |data|
     country.name = data[:name]
   end
 end
+
+Admin.find_or_create_by!(email: "test@test.com") do |admin|
+  admin.password = "123456"
+  admin.password_confirmation = "123456"
+end

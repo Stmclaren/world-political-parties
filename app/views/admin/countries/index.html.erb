@@ -7,6 +7,48 @@
     <option value="<%= country.id %>"><%= country.name %></option>
         <% end%>
   </select>
+  <div class="party-radio-selection" id="party-radio-selection">
+    <div class="form-check">
+      <input class="form-check-input"
+            type="radio"
+            name="party-radio-selection"
+            value="Far Left"
+            id="rulingPartyRadio1">
+      <label class="far-left-label">Far Left</label>
+    </div>
+    <div class="form-check">
+      <input class="form-check-input"
+            type="radio"
+            name="party-radio-selection"
+            value="Centre Left"
+            id="rulingPartyRadio2">
+      <label class="centre-left-label">Centre Left</label>
+    </div>
+    <div class="form-check">
+      <input class="form-check-input"
+            type="radio"
+            name="party-radio-selection"
+            value="Centre"
+            id="rulingPartyRadio3">
+      <label class="centre-label">Centre</label>
+    </div>
+    <div class="form-check">
+      <input class="form-check-input"
+            type="radio"
+            name="party-radio-selection"
+            value="Centre Right"
+            id="rulingPartyRadio4">
+      <label class="centre-right-label">Centre Right</label>
+    </div>
+    <div class="form-check">
+      <input class="form-check-input"
+            type="radio"
+            name="party-radio-selection"
+            value="Far Right"
+            id="rulingPartyRadio5">
+      <label class="far-right-label">Far Right</label>
+    </div>
+  </div>
   <div class="edit-country-form">
     <input type="hidden" id="countryIdInput">
     <div class="country-input-field government-structure-input">

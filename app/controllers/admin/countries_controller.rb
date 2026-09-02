@@ -31,6 +31,6 @@ class Admin::CountriesController < Admin::BaseController
   private
 
   def country_params
-    params.require(:country).permit(:government_structure, :electoral_system, :political_parties, :eu_alignment, :governance_indicators, :key_issues, :updated_at)
+    params.require(:country).permit(:government_structure, :electoral_system, :political_parties, :eu_alignment, :governance_indicators, :key_issues, :ruling_party, :updated_at)
   end
 end

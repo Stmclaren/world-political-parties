@@ -6,10 +6,13 @@
   <p class="iso-header"><%= country.iso %></p>
   </div>
   <br>
-  <p><%= country.description %></p>
+  <div class="political-spectrum">
+    <h4>Political Spectrum</h4>
+    <p class="spectrum-value"><%= country.ruling_party %></p>
+  </div>
+  <br>
   <!-- Add political data here later -->
   <div class="accordion" id="myAccordion">
-
     <div class="accordion-item">
       <h2 class="accordion-header" id="headingOne">
         <button class="accordion-button collapsed"

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2026_08_21_141956) do
+ActiveRecord::Schema[8.1].define(version: 2026_09_15_155543) do
   create_table "admins", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.string "email", default: "", null: false
@@ -45,5 +45,6 @@ ActiveRecord::Schema[8.1].define(version: 2026_08_21_141956) do
     t.string "ruling_party"
     t.string "slug"
     t.datetime "updated_at", null: false
+    t.index ["iso"], name: "index_countries_on_iso", unique: true
   end
 end

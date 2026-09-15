@@ -7,9 +7,8 @@
 #   ["Action", "Comedy", "Drama", "Horror"].each do |genre_name|
 #     MovieGenre.find_or_create_by!(name: genre_name)
 #   end
-Country.destroy_all
 
-countries = Country.create!([
+countries = [
   { iso: "AFG", name: "Afghanistan", continent: "Asia" },
   { iso: "ALB", name: "Albania", continent: "Europe" },
   { iso: "DZA", name: "Algeria", continent: "Africa" },
@@ -206,12 +205,13 @@ countries = Country.create!([
   { iso: "YEM", name: "Yemen", continent: "Asia" },
   { iso: "ZMB", name: "Zambia", continent: "Africa" },
   { iso: "ZWE", name: "Zimbabwe", continent: "Africa" }
-])
+]
 p "Created #{Country.count} countries"
 
-countries.each do |data|
-  Country.find_or_create_by!(iso: data[:iso]) do |country|
-    country.name = data[:name]
+countries.each do |country_data|
+  Country.find_or_create_by!(iso: country_data[:iso]) do |country|
+    country.name = country_data[:name]
+    country.continent = country_data[:continent]
   end
 end
 

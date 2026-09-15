@@ -1,7 +1,7 @@
 import { Controller } from "@hotwired/stimulus"
 import { Collapse } from "bootstrap"
 import mapboxgl from "mapbox-gl"
-// import { toggleOutline, toggleFill } from "../mapbox/toggles"
+import { iso3ToIso2 } from "./iso3_to_iso2_mapping"
 
 export default class extends Controller {
   static targets = ["container"]
@@ -97,8 +97,28 @@ export default class extends Controller {
       const iso = features[0].properties.iso_3166_1_alpha_3
 
       this.loadSidebar(iso);
+      this.updateFlag(iso);
       this.highlightCountry(iso);
     });
+  }
+
+    getFlagPath(adminAlpha3code) {
+
+    const codeUpper = adminAlpha3code.toUpperCase();
+    const alpha2 = iso3ToIso2[codeUpper];
+
+    return alpha2;
+  }
+
+  updateFlag(iso3) {
+
+    const flag = document.getElementById("flag-select")
+
+    if (!flag) return;
+
+    const alpha2 = this.getFlagPath(iso3);
+
+    flag.src = `/assets/flags/${alpha2}.svg`
   }
 
   loadSidebar(iso) {
@@ -107,6 +127,7 @@ export default class extends Controller {
       .then(html => {
         const sidebar = document.getElementById("sidebar")
         sidebar.innerHTML = html
+        this.updateFlag(iso)
         // Reinitialize Bootstrap collapse for the newly injected HTML
         this.initializeAccordion(sidebar)
       });

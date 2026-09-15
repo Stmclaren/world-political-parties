@@ -15,6 +15,11 @@ Rails.application.routes.draw do
   get "/map", to: "map#show"
   get "/countries/:iso/sidebar", to: "countries#sidebar"
   resources :countries, only: [ :index ]
+  resources :countries, param: :iso do
+    collection do
+      get :map_data
+    end
+  end
   namespace :admin do
     resource :dashboard, only: :show
     resources :countries, only: [ :index, :show, :edit, :update ]

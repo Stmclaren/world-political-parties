@@ -7,7 +7,6 @@ export default class extends Controller {
   static targets = ["container"]
   static values = { token: String }
 
-
   connect() {
     mapboxgl.accessToken = this.tokenValue;
 
@@ -33,13 +32,45 @@ export default class extends Controller {
     });
   }
 
-  addCountryLayers() {
+  async fetchCountryData() {
+    const response = await fetch("/countries/map_data");
+    return await response.json();
+  }
+
+  async buildCountryColorExpression() {
+      const countries = await this.fetchCountryData();
+      const colorPalette = {
+          "Far Left": "#800020",
+          "Centre Left": "#FF0000",
+          "Centre": "#a915e4",
+          "Centre Right": "#0909FF",
+          "Far Right": "#664e2c"
+      };
+
+      const expression = [
+        "match",
+        ["get", "iso_3166_1_alpha_3"]
+      ];
+
+      countries.forEach(country => {
+        expression.push(
+          country.iso,
+          colorPalette[country.ruling_party] || "#ffffff"
+        );
+      });
+      expression.push('#ffffff');
+      return expression;
+    };
+
+  async addCountryLayers() {
     this.map.addSource("countries", {
       type: "vector",
       url: "mapbox://mapbox.country-boundaries-v1"
     });
 
-      // Highlight selected country
+    const generateCountryColorExpression =
+      await this.buildCountryColorExpression();
+
     if (this.map.getLayer("country-fill")) return;
     this.map.addLayer({
       id: "country-fill",
@@ -47,15 +78,14 @@ export default class extends Controller {
       source: "countries",
       "source-layer": "country_boundaries",
       paint: {
-        "fill-color": "#0080ff",
-        "fill-opacity": 0.3,
-        "fill-antialias": false
+        "fill-color": generateCountryColorExpression,
+        "fill-opacity": 0.18
       }
     },
-      "land" // insert before land tint layer
+      "country-label" // insert before country-label layer
     );
   }
-      // Auto-center using Turf
+
   enableCountryClick() {
     this.map.on("click", (e) => {
       const features = this.map.queryRenderedFeatures(e.point, {

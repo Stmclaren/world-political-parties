@@ -206,7 +206,6 @@ countries = [
   { iso: "ZMB", name: "Zambia", continent: "Africa" },
   { iso: "ZWE", name: "Zimbabwe", continent: "Africa" }
 ]
-p "Created #{Country.count} countries"
 
 countries.each do |country_data|
   Country.find_or_create_by!(iso: country_data[:iso]) do |country|

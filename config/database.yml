@@ -23,23 +23,31 @@ test:
 # Store production database in the storage/ directory, which by default
 # is mounted as a persistent Docker volume in config/deploy.yml.
 production:
-  <<: *default
-  adapter: postgresql
-  encoding: unicode
-  host: <%= ENV["DB_HOST"] %>
-  port: <%= ENV["DB_PORT"] || 5432 %>
-  database: postgres
-  username: <%= ENV["DB_USERNAME"] %>
-  password: <%= ENV["DB_PASSWORD"] %>
-  # cache:
-  #   <<: *default
-  #   database: storage/production_cache.sqlite3
-  #   migrations_paths: db/cache_migrate
-  # queue:
-  #   <<: *default
-  #   database: storage/production_queue.sqlite3
-  #   migrations_paths: db/queue_migrate
-  # cable:
-  #   <<: *default
-  #   database: storage/production_cable.sqlite3
-  #   migrations_paths: db/cable_migrate
+  primary:
+    <<: *default
+    host: <%= ENV["DB_HOST"] %>
+    port: <%= ENV["DB_PORT"] || 5432 %>
+    database: postgres
+    username: <%= ENV["DB_USERNAME"] %>
+    password: <%= ENV["DB_PASSWORD"] %>
+  cache:
+    <<: *default
+    host: <%= ENV["DB_HOST"] %>
+    port: <%= ENV["DB_PORT"] || 5432 %>
+    database: postgres
+    username: <%= ENV["DB_USERNAME"] %>
+    password: <%= ENV["DB_PASSWORD"] %>
+  queue:
+    <<: *default
+    host: <%= ENV["DB_HOST"] %>
+    port: <%= ENV["DB_PORT"] || 5432 %>
+    database: postgres
+    username: <%= ENV["DB_USERNAME"] %>
+    password: <%= ENV["DB_PASSWORD"] %>
+  cable:
+    <<: *default
+    host: <%= ENV["DB_HOST"] %>
+    port: <%= ENV["DB_PORT"] || 5432 %>
+    database: postgres
+    username: <%= ENV["DB_USERNAME"] %>
+    password: <%= ENV["DB_PASSWORD"] %>

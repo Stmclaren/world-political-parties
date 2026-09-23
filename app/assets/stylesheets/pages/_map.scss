@@ -1,7 +1,56 @@
 .map-container {
   display: flex;
+  height: 94vh;
 }
 
 .map-item {
   padding-top: 0px;
+  height: 100%;
+}
+
+.map-item .empty-mapbox {
+  height: 100%;
+  width: 100%;
+}
+
+.sidebar {
+  overflow-y: auto;
+}
+
+@media (min-width: 992px) {
+  .map-container {
+    flex-direction: row;
+  }
+
+  .map-item {
+    width: 66.666%;
+  }
+
+  .map-item .empty-mapbox {
+    width: 100%;
+  }
+
+  .sidebar {
+    width: 33.333%;
+  }
+}
+
+@media (max-width: 500px) {
+  .map-container {
+    flex-direction: column;
+  }
+
+  .map-item {
+    width: 100%;
+    height: 45%;
+  }
+
+  .map-item .empty-mapbox {
+    width: 100%;
+  }
+
+  .sidebar {
+    width: 100%;
+    height: 55%;
+  }
 }

@@ -18,6 +18,7 @@ Rails.application.routes.draw do
   resources :countries, param: :iso do
     collection do
       get :map_data
+      get :print_preview
     end
   end
   namespace :admin do

@@ -1,13 +1,14 @@
 <%= render "shared/navbar" %>
 
 <div class="print-list">
-  <ol class="list-group">
+  <ol class="list-group" id="print-select-form">
     <ol class="list-group-item">
-      <input class="accordion-item"
+      <input class="accordion-item continent-checkbox"
              type="checkbox"
              value=""
-             id="firstCheckbox">
-      <label class="accordion-item collapsed">Africa</label>
+             id="checkbox-africa"
+             data-target-collapse="#country-list-africa">
+      <label class="accordion-item collapsed" for="checkbox-africa">Africa</label>
       <button class="btn-primary btn" id="continent-expand"
               type="button"
               data-bs-toggle="collapse"
@@ -15,91 +16,131 @@
               aria-expanded="false"
               aria-controls="country-list-africa">Expand</button>
       <div id="country-list-africa" class="collapse">
-        <% @countries.each do |country| %>
-          <% if country.continent == "Africa" %>
-        <li>
-          <input class="form-check-input" type="checkbox" id="print-info <% country.name %>">
-          <label for="print-info<% country.name %>" class="form-check-label"><%= country.name %></label>
-        </li>
+        <ul class="list-unstyled ps-3 mt-2">
+          <% @countries.each do |country| %>
+            <% if country.continent == "Africa" %>
+              <% country_id = "country-#{country.name.parameterize}" %>
+              <li>
+                <input class="country-checkbox form-check-input"
+                      type="checkbox"
+                      name="country_ids[]"
+                      value="<%= country.id %>"
+                      id="<%= country.id %>">
+                <label for="<%= country.id %>" class="form-check-label">
+                  <%= country.name %>
+                </label>
+              </li>
+            <% end %>
           <% end %>
-        <% end %>
+        </ul>
       </div>
     </ol>
     <ol class="list-group-item">
-      <input class="accordion-item"
+      <input class="accordion-item continent-checkbox"
              type="checkbox"
              value=""
-             id="firstCheckbox">
-      <label class="accordion-item collapsed">Asia</label>
+             id="checkbox-asia"
+             data-target-collapse="#country-list-asia">
+      <label class="accordion-item collapsed" for="checkbox-asia">Asia</label>
       <button class="btn-primary btn" id="continent-expand"
               type="button"
               data-bs-toggle="collapse"
               data-bs-target="#country-list-asia"
               aria-expanded="false"
-              aria-controls="country-list-africa">Expand</button>
+              aria-controls="country-list-asia">Expand</button>
       <div id="country-list-asia" class="collapse">
-        <% @countries.each do |country| %>
-          <% if country.continent == "Asia" %>
-        <li>
-          <input class="form-check-input" type="checkbox" id="print-info <% country.name %>">
-          <label for="print-info<% country.name %>" class="form-check-label"><%= country.name %></label>
-        </li>
+        <ul class="list-unstyled ps-3 mt-2">
+          <% @countries.each do |country| %>
+            <% if country.continent == "Asia" %>
+              <% country_id = "country-#{country.name.parameterize}" %>
+              <li>
+                <input class="country-checkbox form-check-input"
+                      type="checkbox"
+                      name="country_ids[]"
+                      value="<%= country.id %>"
+                      id="<%= country.id %>">
+                <label for="<%= country.id %>" class="form-check-label">
+                  <%= country.name %>
+                </label>
+              </li>
+            <% end %>
           <% end %>
-        <% end %>
+        </ul>
       </div>
     </ol>
     <ol class="list-group-item">
-      <input class="accordion-item"
+      <input class="accordion-item continent-checkbox"
              type="checkbox"
              value=""
-             id="firstCheckbox">
-      <label class="accordion-item collapsed">Europe</label>
+             id="checkbox-europe"
+             data-target-collapse="#country-list-europe">
+      <label class="accordion-item collapsed" for="checkbox-europe">Europe</label>
       <button class="btn-primary btn" id="continent-expand"
               type="button"
               data-bs-toggle="collapse"
               data-bs-target="#country-list-europe"
               aria-expanded="false"
-              aria-controls="country-list-africa">Expand</button>
+              aria-controls="country-list-europe">Expand</button>
       <div id="country-list-europe" class="collapse">
-        <% @countries.each do |country| %>
-          <% if country.continent == "Europe" %>
-        <li>
-          <input class="form-check-input" type="checkbox" id="print-info <% country.name %>">
-          <label for="print-info<% country.name %>" class="form-check-label"><%= country.name %></label>
-        </li>
+        <ul class="list-unstyled ps-3 mt-2">
+          <% @countries.each do |country| %>
+            <% if country.continent == "Europe" %>
+              <% country_id = "country-#{country.name.parameterize}" %>
+              <li>
+                <input class="country-checkbox form-check-input"
+                      type="checkbox"
+                      name="country_ids[]"
+                      value="<%= country.id %>"
+                      id="<%= country.id %>">
+                <label for="<%= country.id %>" class="form-check-label">
+                  <%= country.name %>
+                </label>
+              </li>
+            <% end %>
           <% end %>
-        <% end %>
+        </ul>
       </div>
     </ol>
     <ol class="list-group-item">
-      <input class="accordion-item"
+      <input class="accordion-item continent-checkbox"
              type="checkbox"
              value=""
-             id="firstCheckbox">
-      <label class="accordion-item collapsed">North America</label>
+             id="checkbox-north-america"
+             data-target-collapse="#country-list-north-america">
+      <label class="accordion-item collapsed" for="checkbox-north-america">North America</label>
       <button class="btn-primary btn" id="continent-expand"
               type="button"
               data-bs-toggle="collapse"
               data-bs-target="#country-list-north-america"
               aria-expanded="false"
-              aria-controls="country-list-africa">Expand</button>
+              aria-controls="country-list-north-america">Expand</button>
       <div id="country-list-north-america" class="collapse">
-        <% @countries.each do |country| %>
-          <% if country.continent == "North America" %>
-        <li>
-          <input class="form-check-input" type="checkbox" id="print-info <% country.name %>">
-          <label for="print-info<% country.name %>" class="form-check-label"><%= country.name %></label>
-        </li>
+        <ul class="list-unstyled ps-3 mt-2">
+          <% @countries.each do |country| %>
+            <% if country.continent == "North America" %>
+              <% country_id = "country-#{country.name.parameterize}" %>
+              <li>
+                <input class="country-checkbox form-check-input"
+                      type="checkbox"
+                      name="country_ids[]"
+                      value="<%= country.id %>"
+                      id="<%= country.id %>">
+                <label for="<%= country.id %>" class="form-check-label">
+                  <%= country.name %>
+                </label>
+              </li>
+            <% end %>
           <% end %>
-        <% end %>
+        </ul>
       </div>
     </ol>
     <ol class="list-group-item">
-      <input class="accordion-item"
+      <input class="accordion-item continent-checkbox"
              type="checkbox"
              value=""
-             id="firstCheckbox">
-      <label class="accordion-item collapsed">Oceania</label>
+             id="checkbox-oceania"
+             data-target-collapse="#country-list-oceania">
+      <label class="accordion-item collapsed" for="checkbox-oceania">Oceania</label>
       <button class="btn-primary btn" id="continent-expand"
               type="button"
               data-bs-toggle="collapse"
@@ -107,22 +148,32 @@
               aria-expanded="false"
               aria-controls="country-list-oceania">Expand</button>
       <div id="country-list-oceania" class="collapse">
-        <% @countries.each do |country| %>
-          <% if country.continent == "Oceania" %>
-        <li>
-          <input class="form-check-input" type="checkbox" id="print-info <% country.name %>">
-          <label for="print-info<% country.name %>" class="form-check-label"><%= country.name %></label>
-        </li>
+        <ul class="list-unstyled ps-3 mt-2">
+          <% @countries.each do |country| %>
+            <% if country.continent == "Oceania" %>
+              <% country_id = "country-#{country.name.parameterize}" %>
+              <li>
+                <input class="country-checkbox form-check-input"
+                      type="checkbox"
+                      name="country_ids[]"
+                      value="<%= country.id %>"
+                      id="<%= country.id %>">
+                <label for="<%= country.id %>" class="form-check-label">
+                  <%= country.name %>
+                </label>
+              </li>
+            <% end %>
           <% end %>
-        <% end %>
+        </ul>
       </div>
     </ol>
     <ol class="list-group-item">
-      <input class="accordion-item"
+      <input class="accordion-item continent-checkbox"
              type="checkbox"
              value=""
-             id="firstCheckbox">
-      <label class="accordion-item collapsed">South America</label>
+             id="checkbox-south-america"
+             data-target-collapse="#country-list-south-america">
+      <label class="accordion-item collapsed" for="checkbox-south-america">South America</label>
       <button class="btn-primary btn" id="continent-expand"
               type="button"
               data-bs-toggle="collapse"
@@ -130,17 +181,30 @@
               aria-expanded="false"
               aria-controls="country-list-south-america">Expand</button>
       <div id="country-list-south-america" class="collapse">
-        <% @countries.each do |country| %>
-          <% if country.continent == "South America" %>
-        <li>
-          <input class="form-check-input" type="checkbox" id="print-info <% country.name %>">
-          <label for="print-info<% country.name %>" class="form-check-label"><%= country.name %></label>
-        </li>
+        <ul class="list-unstyled ps-3 mt-2">
+          <% @countries.each do |country| %>
+            <% if country.continent == "South America" %>
+              <% country_id = "country-#{country.name.parameterize}" %>
+              <li>
+                <input class="country-checkbox form-check-input"
+                      type="checkbox"
+                      name="country_ids[]"
+                      value="<%= country.id %>"
+                      id="<%= country.id %>">
+                <label for="<%= country.id %>" class="form-check-label">
+                  <%= country.name %>
+                </label>
+              </li>
+            <% end %>
           <% end %>
-        <% end %>
+        </ul>
       </div>
     </ol>
-  </ol>
   <br>
-  <button class="btn btn-primary" id="confirm-country-selection">Confirm Selection</button>
+    <%= link_to "Print Selected Countries",
+                print_preview_countries_path,
+                id: "confirm-country-selection",
+                class: "btn btn-primary disabled-link",
+                aria: { disabled: true },
+                tabindex: "-1" %>
 </div>

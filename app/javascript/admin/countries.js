@@ -1,21 +1,21 @@
   // const input0 = setCheckedRadioValue("party-radio-selection", country.ruling_party || "");
-      const getSelectedRadioValue = (name) => {
-      const selected = document.querySelector(`input[name="${name}"]:checked`);
-      return selected ? selected.value : "";
-    };
+const getSelectedRadioValue = (name) => {
+const selected = document.querySelector(`input[name="${name}"]:checked`);
+  return selected ? selected.value : "";
+};
 
-    const setCheckedRadioValue = (name, value) => {
-      document.querySelectorAll(`input[name="${name}"]`).forEach((radio) => {
-        radio.checked = radio.value ===value;
-      })
-    }
+const setCheckedRadioValue = (name, value) => {
+  document.querySelectorAll(`input[name="${name}"]`).forEach((radio) => {
+    radio.checked = radio.value ===value;
+  })
+}
 
-  const input1 = document.getElementById("governmentInput");
-  const input2 = document.getElementById("electoralInput");
-  const input3 = document.getElementById("partiesInput");
-  const input4 = document.getElementById("euInput");
-  const input5 = document.getElementById("indicatorsInput");
-  const input6 = document.getElementById("issuesInput");
+const input1 = document.getElementById("governmentInput");
+const input2 = document.getElementById("electoralInput");
+const input3 = document.getElementById("partiesInput");
+const input4 = document.getElementById("euInput");
+const input5 = document.getElementById("indicatorsInput");
+const input6 = document.getElementById("issuesInput");
 
 document.addEventListener("turbo:load", () => {
   const dropdown = document.getElementById("country-select");

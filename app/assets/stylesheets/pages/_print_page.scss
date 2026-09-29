@@ -12,3 +12,9 @@ float: right;
 ol.list-group-item {
   list-style-type: none;
 }
+
+.disabled-link {
+  pointer-events: none;
+  opacity: 0.5;
+  cursor: not-allowed;
+}

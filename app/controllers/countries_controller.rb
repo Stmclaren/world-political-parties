@@ -3,6 +3,14 @@ class CountriesController < ApplicationController
     @countries = Country.order(:name)
   end
 
+  def print_preview
+    @countries = Country.find(params[:id])
+    respond_to do |format|
+      format.html
+      format.json { render json: @country }
+    end
+  end
+
   def map_data
     render json: Country.all.map { |country|
       {

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2026_09_15_155543) do
+ActiveRecord::Schema[8.1].define(version: 2026_10_09_151947) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
 
@@ -44,9 +44,11 @@ ActiveRecord::Schema[8.1].define(version: 2026_09_15_155543) do
     t.string "iso"
     t.text "key_issues"
     t.string "name"
+    t.text "news_keywords"
     t.text "political_parties"
     t.string "ruling_party"
     t.string "slug"
+    t.boolean "track_news", default: false, null: false
     t.datetime "updated_at", null: false
     t.index ["iso"], name: "index_countries_on_iso", unique: true
   end

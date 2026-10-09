@@ -1,0 +1,19 @@
+[project]
+name = "world-political-parties"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+authors = [
+    { name = "Stephen McLaren", email = "stephen-mclaren@hotmail.com" }
+]
+requires-python = ">=3.12"
+dependencies = [
+    "logfire>=5.1.1",
+]
+
+[project.scripts]
+world-political-parties = "world_political_parties:main"
+
+[build-system]
+requires = ["uv_build>=0.12.24,<0.13.0"]
+build-backend = "uv_build"

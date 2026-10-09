@@ -10,6 +10,18 @@ const setCheckedRadioValue = (name, value) => {
   })
 }
 
+const getSelectedTrackValue = (name) => {
+const tracking = document.querySelector(`input[name="${name}"]:checked`);
+  if (!tracking) return false
+  return tracking.value === "true";
+};
+
+const setCheckedTrackValue = (name, value) => {
+  document.querySelectorAll(`input[name="${name}"]`).forEach((radio) => {
+    radio.checked = radio.value === String(value);
+  })
+}
+
 const input1 = document.getElementById("governmentInput");
 const input2 = document.getElementById("electoralInput");
 const input3 = document.getElementById("partiesInput");
@@ -33,6 +45,7 @@ document.addEventListener("turbo:load", () => {
       const country = await response.json();
 
       setCheckedRadioValue("party-radio-selection", country.ruling_party || "");
+      setCheckedTrackValue("ai-research-radio-selection", country.track_news);
 
       input1.value = country.government_structure || "";
       input2.value = country.electoral_system || "";
@@ -67,6 +80,7 @@ document.addEventListener("turbo:load", () => {
       body: JSON.stringify({
         country: {
           ruling_party: getSelectedRadioValue("party-radio-selection"),
+          track_news: getSelectedTrackValue("ai-research-radio-selection"),
           government_structure: document.getElementById("governmentInput").value,
           electoral_system: document.getElementById("electoralInput").value,
           political_parties: document.getElementById("partiesInput").value,

@@ -19,14 +19,15 @@
         <ul class="list-unstyled ps-3 mt-2">
           <% @countries.each do |country| %>
             <% if country.continent == "Africa" %>
-              <% country_id = "country-#{country.name.parameterize}" %>
+              <% country_dom_id = "country-#{country.name.parameterize}" %>
               <li>
                 <input class="country-checkbox form-check-input"
                       type="checkbox"
                       name="country_ids[]"
                       value="<%= country.id %>"
-                      id="<%= country.id %>">
-                <label for="<%= country.id %>" class="form-check-label">
+                      data-country-name="<%= country.name %>"
+                      id="<%= country_dom_id %>">
+                <label for="<%= country_dom_id %>" class="form-check-label">
                   <%= country.name %>
                 </label>
               </li>
@@ -52,14 +53,15 @@
         <ul class="list-unstyled ps-3 mt-2">
           <% @countries.each do |country| %>
             <% if country.continent == "Asia" %>
-              <% country_id = "country-#{country.name.parameterize}" %>
+              <% country_dom_id = "country-#{country.name.parameterize}" %>
               <li>
                 <input class="country-checkbox form-check-input"
                       type="checkbox"
                       name="country_ids[]"
                       value="<%= country.id %>"
-                      id="<%= country.id %>">
-                <label for="<%= country.id %>" class="form-check-label">
+                      data-country-name="<%= country.name %>"
+                      id="<%= country_dom_id %>">
+                <label for="<%= country_dom_id %>" class="form-check-label">
                   <%= country.name %>
                 </label>
               </li>
@@ -85,14 +87,15 @@
         <ul class="list-unstyled ps-3 mt-2">
           <% @countries.each do |country| %>
             <% if country.continent == "Europe" %>
-              <% country_id = "country-#{country.name.parameterize}" %>
+              <% country_dom_id = "country-#{country.name.parameterize}" %>
               <li>
                 <input class="country-checkbox form-check-input"
                       type="checkbox"
                       name="country_ids[]"
                       value="<%= country.id %>"
-                      id="<%= country.id %>">
-                <label for="<%= country.id %>" class="form-check-label">
+                      data-country-name="<%= country.name %>"
+                      id="<%= country_dom_id %>">
+                <label for="<%= country_dom_id %>" class="form-check-label">
                   <%= country.name %>
                 </label>
               </li>
@@ -118,14 +121,15 @@
         <ul class="list-unstyled ps-3 mt-2">
           <% @countries.each do |country| %>
             <% if country.continent == "North America" %>
-              <% country_id = "country-#{country.name.parameterize}" %>
+              <% country_dom_id = "country-#{country.name.parameterize}" %>
               <li>
                 <input class="country-checkbox form-check-input"
                       type="checkbox"
                       name="country_ids[]"
                       value="<%= country.id %>"
-                      id="<%= country.id %>">
-                <label for="<%= country.id %>" class="form-check-label">
+                      data-country-name="<%= country.name %>"
+                      id="<%= country_dom_id %>">
+                <label for="<%= country_dom_id %>" class="form-check-label">
                   <%= country.name %>
                 </label>
               </li>
@@ -151,14 +155,15 @@
         <ul class="list-unstyled ps-3 mt-2">
           <% @countries.each do |country| %>
             <% if country.continent == "Oceania" %>
-              <% country_id = "country-#{country.name.parameterize}" %>
+              <% country_dom_id = "country-#{country.name.parameterize}" %>
               <li>
                 <input class="country-checkbox form-check-input"
                       type="checkbox"
                       name="country_ids[]"
                       value="<%= country.id %>"
-                      id="<%= country.id %>">
-                <label for="<%= country.id %>" class="form-check-label">
+                      data-country-name="<%= country.name %>"
+                      id="<%= country_dom_id %>">
+                <label for="<%= country_dom_id %>" class="form-check-label">
                   <%= country.name %>
                 </label>
               </li>
@@ -184,14 +189,15 @@
         <ul class="list-unstyled ps-3 mt-2">
           <% @countries.each do |country| %>
             <% if country.continent == "South America" %>
-              <% country_id = "country-#{country.name.parameterize}" %>
+              <% country_dom_id = "country-#{country.name.parameterize}" %>
               <li>
                 <input class="country-checkbox form-check-input"
                       type="checkbox"
                       name="country_ids[]"
                       value="<%= country.id %>"
-                      id="<%= country.id %>">
-                <label for="<%= country.id %>" class="form-check-label">
+                      data-country-name="<%= country.name %>"
+                      id="<%= country_dom_id %>">
+                <label for="<%= country_dom_id %>" class="form-check-label">
                   <%= country.name %>
                 </label>
               </li>
@@ -200,6 +206,7 @@
         </ul>
       </div>
     </ol>
+
   <br>
     <%= link_to "Print Selected Countries",
                 print_preview_countries_path,
@@ -207,4 +214,5 @@
                 class: "btn btn-primary disabled-link",
                 aria: { disabled: true },
                 tabindex: "-1" %>
+  </ol>
 </div>

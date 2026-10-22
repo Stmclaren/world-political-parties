@@ -4,10 +4,10 @@ class CountriesController < ApplicationController
   end
 
   def print_preview
-    @countries = Country.find(params[:id])
-    respond_to do |format|
-      format.html
-      format.json { render json: @country }
+    if params[:country_ids].present?
+      @countries = Country.where(id: params[:country_ids]).order(:name)
+    else
+      @countries = []
     end
   end
 

@@ -1,0 +1,23 @@
+<div class="country-print-container" id="print-preview-container">
+  <div class="print-header">
+    <% @countries.each do |country| %>
+    <h2 class="print-country-name">
+      <%= country.name %>
+    </h2>
+    <img id="flag-select" width="24px" src="/assets/flags/<%= country.iso %>.svg">
+    <p class="iso-header">
+      <%= country.iso %>
+    </p>
+  </div>
+  <dl class="print-content row">
+    <dt class="col-sm-3">Ruling Party</dt>
+    <dd class="col-sm-9">
+      <P><%= country.ruling_party %></p>
+    </dd>
+    <dt class="col-sm-3">Government Structure</dt>
+    <dd class="col-sm-9">
+      <P><%= country.government_structure %></p>
+    </dd>
+  </dl>
+  <% end %>
+</div>

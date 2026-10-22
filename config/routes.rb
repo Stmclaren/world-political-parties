@@ -14,8 +14,7 @@ Rails.application.routes.draw do
   root to: "map#show"
   get "/map", to: "map#show"
   get "/countries/:iso/sidebar", to: "countries#sidebar"
-  resources :countries, only: [ :index ]
-  resources :countries, param: :iso do
+  resources :countries, only: [ :index ], param: :iso do
     collection do
       get :map_data
       get :print_preview

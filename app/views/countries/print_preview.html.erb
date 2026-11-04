@@ -1,10 +1,17 @@
+<%= render "shared/navbar" %>
+
 <div class="country-print-container" id="print-preview-container">
   <div class="print-header">
     <% @countries.each do |country| %>
     <h2 class="print-country-name">
       <%= country.name %>
     </h2>
-    <img id="flag-select" width="24px" src="/assets/flags/<%= country.iso %>.svg">
+    <img
+      class="country-flag"
+      id="flag-select"
+      width="24px"
+      data-iso="<%= country.iso %>"
+      alt="<%= country.name %> flag">
     <p class="iso-header">
       <%= country.iso %>
     </p>

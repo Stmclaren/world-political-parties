@@ -4,11 +4,9 @@ class CountriesController < ApplicationController
   end
 
   def print_preview
-    if params[:country_ids].present?
-      @countries = Country.where(id: params[:country_ids]).order(:name)
-    else
-      @countries = []
-    end
+    ids = params[:ids].split(",")
+
+    @countries = Country.where(id: ids)
   end
 
   def map_data

@@ -102,7 +102,7 @@ export default class extends Controller {
     });
   }
 
-    getFlagPath(adminAlpha3code) {
+  getFlagPath(adminAlpha3code) {
 
     const codeUpper = adminAlpha3code.toUpperCase();
     const alpha2 = iso3ToIso2[codeUpper];

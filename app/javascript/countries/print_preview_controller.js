@@ -1,5 +1,5 @@
 import mapboxgl from "mapbox-gl"
-
+import { iso3ToIso2 } from "controllers/iso3_to_iso2_mapping"
 
 function initCountrySelection(){
   const container = document.getElementById("print-select-form");
@@ -52,32 +52,38 @@ function populatePrintPreview(event){
   if (event) event.preventDefault();
 
   const checkedCountries = document.querySelectorAll(".country-checkbox:checked");
-  const selectedCountryData = Array.from(checkedCountries).map(checkbox => {
-    return checkbox.dataset.countryName;
-  });
-
-  if (selectedCountryData.length === 0) {
+   const ids = Array.from(checkedCountries).map(
+    checkbox => checkbox.value
+  );
+    console.log(ids);
+  if (ids.length === 0) {
     alert("No countries selected.");
     return;
   }
 
-  sessionStorage.setItem('selectedCountries', JSON.stringify(selectedCountryData));
-  window.location.href = '/countries/print_preview';
+  window.location.href = `/countries/print_preview?ids=${ids.join(',')}`;
 
 }
+
+document.querySelectorAll(".country-flag").forEach((flag) => {
+  const iso3 = flag.dataset.iso;
+
+  const iso2 = iso3ToIso2[iso3.toUpperCase()];
+
+  if (iso2) {
+    flag.src = `/assets/flags/${iso2}.svg`;
+  }
+});
 
 document.addEventListener('DOMContentLoaded', () => {
   console.log("Print preview JS is running!");
   const printContainer = document.getElementById('print-preview-container');
 
+
     if (!printContainer) return;
 
-      const storedData = sessionStorage.getItem('selectedCountries');
-      if (storedData) {
-        const countries = JSON.parse(storedData);
-          printContainer.innerHTML = `<h3>Country Report:</h3>` +
-            `<ul>${countries.map(c => `<li>${c}</li>`).join('')}</ul>`;
-      }
+      console.log("Print Preview Loaded")
+
 });
 
 document.addEventListener("turbo:load", initCountrySelection);
@@ -87,3 +93,22 @@ const printButton = document.getElementById('confirm-country-selection');
 if (printButton) {
   printButton.addEventListener('click', populatePrintPreview)
 }
+
+// getFlagPath(adminAlpha3code) {
+
+//     const codeUpper = adminAlpha3code.toUpperCase();
+//     const alpha2 = iso3ToIso2[codeUpper];
+
+//     return alpha2;
+// }
+
+// updateFlag(iso3) {
+
+//     const flag = document.getElementById("flag-select")
+
+//     if (!flag) return;
+
+//     const alpha2 = this.getFlagPath(iso3);
+
+//     flag.src = `/assets/flags/${alpha2}.svg`
+// }

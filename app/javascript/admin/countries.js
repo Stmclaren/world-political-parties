@@ -23,6 +23,7 @@ const setCheckedTrackValue = (name, value) => {
 }
 
 const input1 = document.getElementById("governmentInput");
+
 const input2 = document.getElementById("electoralInput");
 const input3 = document.getElementById("partiesInput");
 const input4 = document.getElementById("euInput");

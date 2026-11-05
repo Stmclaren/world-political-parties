@@ -3,11 +3,16 @@ class CountriesController < ApplicationController
     @countries = Country.order(:name)
   end
 
-  def print_preview
-    ids = params[:ids].split(",")
+def print_preview
+  return head :ok if params[:ids].blank? && request.headers["Turbo-Purpose"] == "prefetch"
 
-    @countries = Country.where(id: ids)
+  if params[:ids].blank?
+    redirect_to countries_path, alert: "No countries selected."
+    return
   end
+
+  @countries = Country.where(id: params[:ids].split(","))
+end
 
   def map_data
     render json: Country.all.map { |country|

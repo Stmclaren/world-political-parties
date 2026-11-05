@@ -1,6 +1,7 @@
 import mapboxgl from "mapbox-gl"
 import { iso3ToIso2 } from "controllers/iso3_to_iso2_mapping"
 
+// function for checkboxes in Print Preview Selection
 function initCountrySelection(){
   const container = document.getElementById("print-select-form");
   const submitLink = document.getElementById("confirm-country-selection");
@@ -48,6 +49,7 @@ function initCountrySelection(){
   })
 }
 
+// function for populating preview page with data from selected countries
 function populatePrintPreview(event){
   if (event) event.preventDefault();
 
@@ -55,7 +57,9 @@ function populatePrintPreview(event){
    const ids = Array.from(checkedCountries).map(
     checkbox => checkbox.value
   );
+
     console.log(ids);
+
   if (ids.length === 0) {
     alert("No countries selected.");
     return;
@@ -65,6 +69,7 @@ function populatePrintPreview(event){
 
 }
 
+// conversion from 3 letter code iso to 2 letter code iso, as assets differ to model
 document.querySelectorAll(".country-flag").forEach((flag) => {
   const iso3 = flag.dataset.iso;
 
@@ -81,7 +86,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
     if (!printContainer) return;
-
       console.log("Print Preview Loaded")
 
 });

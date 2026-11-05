@@ -1,4 +1,6 @@
-<%= render "shared/navbar" %>
+<%# <nav class="navbar no-print"> %>
+  <%= render "shared/navbar", print_preview: true %>
+<%# </nav> %>
 
 <div class="country-print-container" id="print-preview-container">
   <div class="print-header">
@@ -24,6 +26,26 @@
     <dt class="col-sm-3">Government Structure</dt>
     <dd class="col-sm-9">
       <P><%= country.government_structure %></p>
+    </dd>
+    <dt class="col-sm-3">Electoral System</dt>
+    <dd class="col-sm-9">
+      <P><%= country.electoral_system %></p>
+    </dd>
+    <dt class="col-sm-3">Political Parties</dt>
+    <dd class="col-sm-9">
+      <P><%= country.political_parties %></p>
+    </dd>
+    <dt class="col-sm-3">EU Alignment</dt>
+    <dd class="col-sm-9">
+      <P><%= country.eu_alignment %></p>
+    </dd>
+    <dt class="col-sm-3">Governance Indicators</dt>
+    <dd class="col-sm-9">
+      <P><%= country.governance_indicators %></p>
+    </dd>
+    <dt class="col-sm-3">Key Issues</dt>
+    <dd class="col-sm-9">
+      <P><%= country.key_issues %></p>
     </dd>
   </dl>
   <% end %>

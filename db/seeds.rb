@@ -214,7 +214,24 @@ countries.each do |country_data|
   end
 end
 
-Admin.find_or_create_by!(email: "test@test.com") do |admin|
-  admin.password = "123456"
-  admin.password_confirmation = "123456"
-end
+admin = Admin.find_or_initialize_by(
+  email: ENV.fetch("OWNER_EMAIL")
+)
+
+admin.assign_attributes(
+  password: ENV.fetch("OWNER_PASSWORD"),
+  password_confirmation: ENV.fetch("OWNER_PASSWORD")
+)
+
+admin.save!
+
+admin = Admin.find_or_initialize_by(
+  email: ENV.fetch("ADMIN_EMAIL")
+)
+
+admin.assign_attributes(
+  password: ENV.fetch("ADMIN_PASSWORD"),
+  password_confirmation: ENV.fetch("ADMIN_PASSWORD")
+)
+
+admin.save!

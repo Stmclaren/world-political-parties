@@ -214,24 +214,18 @@ countries.each do |country_data|
   end
 end
 
-admin = Admin.find_or_initialize_by(
-  email: ENV.fetch("OWNER_EMAIL")
-)
-
-admin.assign_attributes(
+owner_email = ENV.fetch("OWNER_EMAIL").strip.downcase
+owner = Admin.find_or_initialize_by(email: owner_email)
+owner.assign_attributes(
   password: ENV.fetch("OWNER_PASSWORD"),
   password_confirmation: ENV.fetch("OWNER_PASSWORD")
 )
+owner.save!
 
-admin.save!
-
-admin = Admin.find_or_initialize_by(
-  email: ENV.fetch("ADMIN_EMAIL")
-)
-
+admin_email = ENV.fetch("ADMIN_EMAIL").strip.downcase
+admin = Admin.find_or_initialize_by(email: admin_email)
 admin.assign_attributes(
   password: ENV.fetch("ADMIN_PASSWORD"),
   password_confirmation: ENV.fetch("ADMIN_PASSWORD")
 )
-
 admin.save!
